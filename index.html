@@ -6,56 +6,47 @@
   <title>Agente PITE</title>
 
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
+    html, body { margin: 0; padding: 0; height: 100%; }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
+    body{
       min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
 
-      /* BACKGROUND */
       background-image: url("Tadayuki.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-
-      position: relative;
-      overflow: hidden;
     }
 
-    /* Overlay leve (opcional) */
-    body::before {
-      content: "";
+    /* Se quiser overlay, ele NÃO pode pegar clique */
+    body::before{
+      content:"";
       position: fixed;
       inset: 0;
-      background: rgba(255,255,255,0.1);
-      z-index: 0;
+      background: rgba(255,255,255,0.10);
+      pointer-events: none;   /* <- CRUCIAL */
     }
 
-    /* CONTAINER DO AGENTE */
-    .agent-container {
-      position: fixed;
+    /* Posiciona o widget no canto e garante área visível/clicável */
+    elevenlabs-convai{
+      position: fixed !important;
       right: 24px;
       bottom: 24px;
-      z-index: 9999;
+      z-index: 2147483647;   /* bem alto */
+      display: block !important;
 
-      /* evita quebrar layout interno do widget */
-      display: block;
+      /* evita ficar “micro” no canto */
+      min-width: 340px;
+      min-height: 120px;
+
+      pointer-events: auto;
     }
 
-    elevenlabs-convai {
-      position: relative;
-      z-index: 10000;
-    }
-
-    /* Ajuste mobile */
-    @media (max-width: 480px) {
-      .agent-container {
+    @media (max-width: 480px){
+      elevenlabs-convai{
         right: 12px;
         bottom: 12px;
+        min-width: 280px;
       }
     }
   </style>
@@ -63,11 +54,9 @@
 
 <body>
 
-  <!-- AGENTE FIXO -->
-  <div class="agent-container">
-    <elevenlabs-convai agent-id="agent_7501kc0b1hvaeymt039z1862ym4f"></elevenlabs-convai>
-  </div>
+  <elevenlabs-convai agent-id="agent_7501kc0b1hvaeymt039z1862ym4f"></elevenlabs-convai>
 
-  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+  <!-- DICA: deixe SEM async para carregar mais consistente -->
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" defer></script>
 </body>
 </html>
