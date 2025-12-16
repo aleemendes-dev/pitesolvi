@@ -1,45 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agente PITE - Teste</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
 
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #f5f6f7;
-    }
-    .card {
-      width: min(920px, 92vw);
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    }
-    h1 { margin: 0 0 6px; font-size: 20px; }
-    p  { margin: 0 0 14px; color: #555; }
-    .hint { font-size: 12px; color: #777; margin-top: 12px; }
-  </style>
-</head>
+    background-image: url("Tadayuki.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
-<body>
-  <div class="card">
-    <h1>Agente PITE</h1>
-    <p>Teste do widget do agente:</p>
+  .card {
+    width: min(920px, 92vw);
+    background: rgba(255, 255, 255, 0.92); /* leve transparência */
+    backdrop-filter: blur(2px);
+    border-radius: 16px;
+    padding: 20px 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  }
 
-    <elevenlabs-convai agent-id="agent_7501kc0b1hvaeymt039z1862ym4f"></elevenlabs-convai>
-
-    <div class="hint">
-      Se não aparecer, verifique bloqueador de script/extensão e tente em aba anônima.
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-</body>
-</html>
-
+  h1 { margin: 0 0 6px; font-size: 20px; }
+  p  { margin: 0 0 14px; color: #555; }
+  .hint { font-size: 12px; color: #777; margin-top: 12px; }
+</style>
