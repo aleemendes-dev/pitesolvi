@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agente PITE - Teste</title>
+  <title>Agente PITE</title>
 
   <style>
-    /* RESET BÁSICO */
     html, body {
       margin: 0;
       padding: 0;
@@ -23,71 +22,50 @@
       background-position: center;
       background-repeat: no-repeat;
 
-      /* CENTRALIZA */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      /* IMPORTANTE */
       position: relative;
+      overflow: hidden;
     }
 
-    /* OVERLAY LEVE (opcional, pode remover) */
+    /* Overlay leve (opcional) */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,0.1);
       z-index: 0;
     }
 
-    .card {
-      width: min(920px, 92vw);
-      background: rgba(255, 255, 255, 0.94);
-      border-radius: 16px;
-      padding: 20px 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    /* CONTAINER DO AGENTE */
+    .agent-container {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 9999;
 
-      /* 🔑 ISSO GARANTE QUE O AGENTE FIQUE NA FRENTE */
-      position: relative;
-      z-index: 10;
+      /* evita quebrar layout interno do widget */
+      display: block;
     }
 
-    h1 {
-      margin: 0 0 6px;
-      font-size: 20px;
-    }
-
-    p {
-      margin: 0 0 14px;
-      color: #555;
-    }
-
-    .hint {
-      font-size: 12px;
-      color: #777;
-      margin-top: 12px;
-    }
-
-    /* GARANTE VISIBILIDADE DO WIDGET */
     elevenlabs-convai {
       position: relative;
-      z-index: 20;
+      z-index: 10000;
+    }
+
+    /* Ajuste mobile */
+    @media (max-width: 480px) {
+      .agent-container {
+        right: 12px;
+        bottom: 12px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>Agente PITE</h1>
-    <p>Teste do widget do agente:</p>
-
+  <!-- AGENTE FIXO -->
+  <div class="agent-container">
     <elevenlabs-convai agent-id="agent_7501kc0b1hvaeymt039z1862ym4f"></elevenlabs-convai>
-
-    <div class="hint">
-      Se não aparecer, verifique bloqueador de script/extensão e tente em aba anônima.
-    </div>
   </div>
 
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
