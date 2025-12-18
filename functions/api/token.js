@@ -9,26 +9,24 @@ export async function onRequestGet(context) {
     );
   }
 
-  const url = `https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id=${encodeURIComponent(agentId)}`;
+  const url =
+    "https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id=" +
+    encodeURIComponent(agentId);
 
-  const r = await fetch(url, {
-    headers: { "xi-api-key": apiKey }
-  });
+  const r = await fetch(url, { headers: { "xi-api-key": apiKey } });
+  const body = await r.text();
 
-  const text = await r.text();
   if (!r.ok) {
     return new Response(
-      JSON.stringify({ error: "ElevenLabs request failed", details: text }),
+      JSON.stringify({ error: "ElevenLabs request failed", details: body }),
       { status: 500, headers: { "content-type": "application/json" } }
     );
   }
 
-  return new Response(text, {
+  return new Response(body, {
     headers: {
       "content-type": "application/json",
       "cache-control": "no-store"
     }
   });
 }
-
-
