@@ -25,18 +25,19 @@
       pointer-events: none;
     }
 
-    /* Avatar – canto superior direito */
+    /* ✅ Avatar – centro da página (maior) */
     #piteAvatar {
       position: fixed;
-      top: 24px;
-      right: 24px;
-      width: 170px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;              /* <-- maior (ajuste aqui se quiser) */
       height: auto;
       z-index: 2147483000;
       pointer-events: none;
       user-select: none;
       -webkit-user-drag: none;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 14px 28px rgba(0,0,0,0.30));
     }
 
     /* Botão */
@@ -68,8 +69,11 @@
       max-width: 340px;
     }
 
+    /* ✅ Responsivo */
     @media (max-width: 480px){
-      #piteAvatar{ top: 12px; right: 12px; width: 140px; }
+      #piteAvatar{
+        width: 240px;  /* menor no celular */
+      }
       #btnCall{ top: 12px; left: 12px; padding: 10px 12px; }
       #status{ top: 60px; left: 12px; max-width: 280px; }
     }
